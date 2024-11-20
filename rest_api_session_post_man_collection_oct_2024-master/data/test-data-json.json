@@ -1,0 +1,19 @@
+[
+	{
+		"ShortDescription": "RESTOCT2024-JSON-1",
+		"Description": "My first description to create incident - JSON file"
+	},
+	{
+		"ShortDescription": "RESTOCT2024-JSON-2",
+		"Description": "My second description to create incident - JSON file"
+	},
+	{
+		"ShortDescription": "RESTOCT2024-JSON-3",
+		"Description": "My third description to create incident - JSON file"
+	},
+	{
+		"ShortDescription": "RESTOCT2024-JSON-4",
+		"Description": "My fourth description to create incident - JSON file"
+	}
+
+]

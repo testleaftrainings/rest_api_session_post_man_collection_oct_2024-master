@@ -1,0 +1,436 @@
+{
+	"info": {
+		"_postman_id": "ecc2f8e5-bb29-46a4-a902-49cf01778183",
+		"name": "week1-day2-chaining-request",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28447185"
+	},
+	"item": [
+		{
+			"name": "RC01_Create_New_Incident_Record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"var jsonResponse = pm.response.json();\r",
+							"pm.collectionVariables.set(\"sysId\", jsonResponse.result.sys_id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{protocol}}{{host_name}}{{base_path}}/:tableName",
+					"host": [
+						"{{protocol}}{{host_name}}{{base_path}}"
+					],
+					"path": [
+						":tableName"
+					],
+					"variable": [
+						{
+							"key": "tableName",
+							"value": "{{tableName}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RC02_Retrieve_A_Signle_Record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Valiadate SysID value\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.result.sys_id).to.eql(pm.collectionVariables.get(\"sysId\"));\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{protocol}}{{host_name}}{{base_path}}/:tableName/:sysId",
+					"host": [
+						"{{protocol}}{{host_name}}{{base_path}}"
+					],
+					"path": [
+						":tableName",
+						":sysId"
+					],
+					"variable": [
+						{
+							"key": "tableName",
+							"value": "{{tableName}}"
+						},
+						{
+							"key": "sysId",
+							"value": "{{sysId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RC03_Edit_Incident_Record_Using_Put_Method",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"short_description\": \"RESTAPIOCT2024\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}{{host_name}}{{base_path}}/:tableName/:sysId",
+					"host": [
+						"{{protocol}}{{host_name}}{{base_path}}"
+					],
+					"path": [
+						":tableName",
+						":sysId"
+					],
+					"variable": [
+						{
+							"key": "tableName",
+							"value": "{{tableName}}"
+						},
+						{
+							"key": "sysId",
+							"value": "{{sysId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RC04_Edit_Incident_Record_Using_Patch_Method",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"Edit description field using the PATCH method\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}{{host_name}}{{base_path}}/:tableName/:sysId",
+					"host": [
+						"{{protocol}}{{host_name}}{{base_path}}"
+					],
+					"path": [
+						":tableName",
+						":sysId"
+					],
+					"variable": [
+						{
+							"key": "tableName",
+							"value": "{{tableName}}"
+						},
+						{
+							"key": "sysId",
+							"value": "{{sysId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RC05_Delete_A_Exisiting_Incident_Record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{protocol}}{{host_name}}{{base_path}}/:tableName/:sysId",
+					"host": [
+						"{{protocol}}{{host_name}}{{base_path}}"
+					],
+					"path": [
+						":tableName",
+						":sysId"
+					],
+					"variable": [
+						{
+							"key": "tableName",
+							"value": "{{tableName}}"
+						},
+						{
+							"key": "sysId",
+							"value": "{{sysId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RC06_Validate_Record_Deletion_Is_Working_Fine",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{protocol}}{{host_name}}{{base_path}}/:tableName/:sysId",
+					"host": [
+						"{{protocol}}{{host_name}}{{base_path}}"
+					],
+					"path": [
+						":tableName",
+						":sysId"
+					],
+					"variable": [
+						{
+							"key": "tableName",
+							"value": "{{tableName}}"
+						},
+						{
+							"key": "sysId",
+							"value": "{{sysId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "protocol",
+			"value": "https://",
+			"type": "string"
+		},
+		{
+			"key": "host_name",
+			"value": "dev262949.service-now.com/",
+			"type": "string"
+		},
+		{
+			"key": "base_path",
+			"value": "api/now/table",
+			"type": "string"
+		},
+		{
+			"key": "tableName",
+			"value": "incident",
+			"type": "string"
+		},
+		{
+			"key": "sysId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "username",
+			"value": "admin",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

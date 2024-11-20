@@ -1,0 +1,328 @@
+{
+	"info": {
+		"_postman_id": "1cb52587-6386-4904-8376-3f12b3bbd950",
+		"name": "week2-day1-jira-collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28447185"
+	},
+	"item": [
+		{
+			"name": "Get_all_projects",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api_token}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{protocol}}{{hostName}}{{basePath}}/project/search",
+					"host": [
+						"{{protocol}}{{hostName}}{{basePath}}"
+					],
+					"path": [
+						"project",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_a_project",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api_token}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{protocol}}{{hostName}}{{basePath}}/project/10003",
+					"host": [
+						"{{protocol}}{{hostName}}{{basePath}}"
+					],
+					"path": [
+						"project",
+						"10003"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create_a_user_story",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api_token}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\": {\r\n        \"summary\": \"Auto create subtask for RESTOCT2024 021120240812\",\r\n        \"issuetype\": {\r\n            \"id\": \"10013\"\r\n        },\r\n        \"project\": {\r\n            \"id\": \"10003\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}{{hostName}}{{basePath}}/issue",
+					"host": [
+						"{{protocol}}{{hostName}}{{basePath}}"
+					],
+					"path": [
+						"issue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create_a_sub_task",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api_token}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\": {\r\n        \"summary\": \"Auto create subtask for RESTOCT2024 021120240812\",\r\n        \"issuetype\": {\r\n            \"id\": \"10015\"\r\n        },\r\n        \"project\": {\r\n            \"id\": \"10003\"\r\n        },\r\n        \"parent\": {\r\n            \"key\": \"SB-13\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}{{hostName}}{{basePath}}/issue",
+					"host": [
+						"{{protocol}}{{hostName}}{{basePath}}"
+					],
+					"path": [
+						"issue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create_a_bug",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api_token}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\": {\r\n        \"summary\": \"Auto create bug for RESTOCT2024 021120240830\",\r\n        \"issuetype\": {\r\n            \"id\": \"10012\"\r\n        },\r\n        \"project\": {\r\n            \"id\": \"10003\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{protocol}}{{hostName}}{{basePath}}/issue",
+					"host": [
+						"{{protocol}}{{hostName}}{{basePath}}"
+					],
+					"path": [
+						"issue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_a_Issue",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api_token}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{protocol}}{{hostName}}{{basePath}}/issue/:issueIdOrKey",
+					"host": [
+						"{{protocol}}{{hostName}}{{basePath}}"
+					],
+					"path": [
+						"issue",
+						":issueIdOrKey"
+					],
+					"variable": [
+						{
+							"key": "issueIdOrKey",
+							"value": "SB-15"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add_Attachment_To_Bug_Ticket",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{api_token}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Atlassian-Token",
+						"value": "no-check",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/Karthikeyan_Rajendra/Downloads/JIRA_API_Collection_V1.postman_collection.json"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{protocol}}{{hostName}}{{basePath}}/issue/:issueIdOrKey/attachments",
+					"host": [
+						"{{protocol}}{{hostName}}{{basePath}}"
+					],
+					"path": [
+						"issue",
+						":issueIdOrKey",
+						"attachments"
+					],
+					"variable": [
+						{
+							"key": "issueIdOrKey",
+							"value": "10028"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "username",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "api_token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
